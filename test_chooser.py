@@ -1,45 +1,49 @@
 import streamlit as st
 import json
 
-# Load the decision tree data
-with open("decision_tree.json", "r") as file:
-    DECISION_TREE = json.load(file)
+# Load the decision tree from the JSON file
+@st.cache
+def load_decision_tree():
+    with open('decision_tree.json', 'r') as file:
+        return json.load(file)
+
+decision_tree = load_decision_tree()
 
 # Recursive function to navigate through the decision tree
 def navigate_tree(node):
     # Display the question
-    with st.chat_message("assistant"):
-        st.write(node["question"])
+    st.write(node["question"])
 
     # If there's a comment, display it
     if "comments" in node:
-        with st.chat_message("assistant"):
-            st.write(node["comments"])
+        st.write(node["comments"])
 
-    # Display the answer options
-    options = [answer["text"] for answer in node["answers"]]
-    choice = st.radio("", options)
+    # Display the answers as buttons
+    answer = st.radio("", [ans["text"] for ans in node["answers"]])
 
-    # Find the chosen answer
-    for answer in node["answers"]:
-        if answer["text"] == choice:
-            # If there's an action, display it
-            if "action" in answer:
-                with st.chat_message("assistant"):
-                    st.write(answer["action"])
-            # If there's a next node, navigate to it
-            elif "next" in answer:
-                next_node_id = answer["next"]
-                for next_node in node["nodes"]:
-                    if next_node["id"] == next_node_id:
-                        navigate_tree(next_node)
-                        break
+    # Find the selected answer
+    for ans in node["answers"]:
+        if ans["text"] == answer:
+            selected_answer = ans
+            break
+
+    # If the selected answer has an action, display it
+    if "action" in selected_answer:
+        st.write(selected_answer["action"])
+        if "interpretation" in selected_answer:
+            st.write(selected_answer["interpretation"])
+
+    # If the selected answer leads to another node, navigate to that node
+    elif "next" in selected_answer:
+        next_node_id = selected_answer["next"]
+        for next_node in node.get("nodes", []):
+            if next_node["id"] == next_node_id:
+                navigate_tree(next_node)
+                break
 
 def main():
     st.title("ČekanavičiusGPT")
-    navigate_tree(DECISION_TREE)
-    if st.button("Iš naujo", key="reset"):
-        st.experimental_rerun()
+    navigate_tree(decision_tree)
 
 if __name__ == "__main__":
     main()
