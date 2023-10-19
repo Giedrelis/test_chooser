@@ -244,7 +244,7 @@
               "answers": [
                 {
                   "id": "4C1A",
-                  "text": "Intervalinis kintamasis visose grupėse turi normalųjį pasiskirstymą",
+                  "text": "Intervalinis kintamasis visose grupėse turi normalųjį pasiskirstymą ir imčių dydžiai nesiskiria per daugiau nei 3 kartus",
                   "action": "ANOVA"
                 },
                 {
