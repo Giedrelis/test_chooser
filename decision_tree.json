@@ -69,7 +69,7 @@
             {
               "id": "2B3",
               "text": "Abu nominalūs",
-              "next": "2B1"
+              "action": "Chi kvadrato nepriklausomumo kriterijus"
             },
             {
               "id": "2B4",
@@ -80,44 +80,6 @@
               "id": "2B5",
               "text": "Abu ranginiai",
               "action": "Spearman koreliacija"
-            }
-          ],
-          "nodes": [
-            {
-              "id": "2B1",
-              "question": "Ar abu kintamieji yra dichotominiai?",
-              "comments": "",
-              "answers": [
-                {
-                  "id": "2B1A",
-                  "text": "Taip",
-                  "next": "2B1A"
-                },
-                {
-                  "id": "2B1B",
-                  "text": "Ne",
-                  "action": "Chi kvadrato nepriklausomumo kriterijus"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "2B1A",
-                  "question": "Ar jūsų duomenų rinkinys yra porinis?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "2B1A1",
-                      "text": "Taip",
-                      "action": "McNemar kriterijus"
-                    },
-                    {
-                      "id": "2B1A2",
-                      "text": "Ne",
-                      "action": "Chi kvadrato nepriklausomumo kriterijus"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         }
