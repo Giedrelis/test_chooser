@@ -1,0 +1,20 @@
+[
+    "Chi kvadrato suderinamumo kriterijus",
+    "Chi kvadrato nepriklausomumo/homogeniškumo kriterijus",
+    "McNemar kriterijus",
+    "Pearson koreliacija",
+    "Spearman koreliacija",
+    "Kendall tau koreliacija",
+    "T-testas vienai imčiai",
+    "T-testas nepriklausomoms imtims",
+    "T-testas porinėms imtims",
+    "ANOVA",
+    "RM ANOVA",
+    "Mann-Whitney",
+    "Wilcoxon",
+    "Kruskal-Wallis",
+    "Friedman",
+    "Normalumas",
+    "Be dvimačių iškirčių",
+    "Ryšys tiesinis"
+]

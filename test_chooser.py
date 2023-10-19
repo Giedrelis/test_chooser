@@ -16,6 +16,38 @@ except Exception as e:
     st.error(f"An error occurred: {e}")
     st.stop()
 
+# Directory where HTML files will be saved
+directory = "html_files"
+
+# Check if the directory exists, if not create it
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
+# Create an HTML file for each test
+def create_html_files_for_tests(tests):
+    for test in tests:
+        file_path = os.path.join(directory, f"{test}.html")
+        if not os.path.exists(file_path):
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(f"<h1>{test}</h1><p>Details for {test} will be added here.</p>")
+
+# Load the list of tests from tests.json
+try:
+    with open("tests.json", "r", encoding="utf-8") as file:
+        tests = json.load(file)
+except FileNotFoundError:
+    st.error("The tests.json file was not found.")
+    st.stop()
+except json.JSONDecodeError:
+    st.error("Invalid JSON format in tests.json.")
+    st.stop()
+except Exception as e:
+    st.error(f"An error occurred: {e}")
+    st.stop()
+
+create_html_files_for_tests(tests)
+
+
 def get_next_node(node_id, tree):
     """
     Retrieve the node with the given ID from the decision tree.
