@@ -110,17 +110,17 @@
       "answers": [
         {
           "id": "3A",
-          "text": "Intervaliniai/santykinės skalės",
+          "text": "Abu intervaliniai/santykinės skalės",
           "next": "3A"
         },
         {
           "id": "3B",
-          "text": "Nominalūs",
+          "text": "Abu nominalūs",
           "action": "Chi kvadrato nepriklausomumo kriterijus"
         },
         {
           "id": "3C",
-          "text": "Ranginiai",
+          "text": "Bent vienas ranginis",
           "action": "Spearman koreliacija"
         },
         {
@@ -170,7 +170,7 @@
     },
     {
       "id": "4",
-      "question": "Su kiek kintamųjų norite lyginti vidurkius?",
+      "question": "Kiek kategorijų yra ",
       "comments": "",
       "answers": [
         {
