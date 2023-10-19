@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import os
 
 # Load the decision tree from the JSON file
 try:
@@ -15,7 +16,7 @@ except Exception as e:
     st.error(f"An error occurred: {e}")
     st.stop()
 
-# Load the tests descriptions from the JSON file
+# Load the tests names from the JSON file
 try:
     with open("tests.json", "r", encoding="utf-8") as file:
         TESTS = json.load(file)
@@ -28,6 +29,17 @@ except json.JSONDecodeError:
 except Exception as e:
     st.error(f"An error occurred: {e}")
     st.stop()
+
+def get_test_description(test_name):
+    """Load the test description from the corresponding HTML file."""
+    file_path = os.path.join("test_descriptions", f"{test_name}.html")
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        return f"Description for {test_name} not found."
+    except Exception as e:
+        return str(e)
 
 def get_next_node(node_id, tree):
     """
@@ -106,7 +118,8 @@ def chat_with_tree():
 
         # Display the test description if available
         if "test" in current_node and current_node["test"] in TESTS:
-            st.sidebar.markdown(TESTS[current_node["test"]])
+            description = get_test_description(current_node["test"])
+            st.sidebar.markdown(description, unsafe_allow_html=True)
 
     # Reset button on the bottom right, always visible
     cols = st.columns([4, 1])
@@ -121,5 +134,5 @@ def chat_with_tree():
 def main():
     chat_with_tree()
 
-if __name__== "__main__":
+if __name__ == "__main__":
     main()
