@@ -192,51 +192,51 @@
       "nodes": [
         {
           "id": "4B",
-          "question": "Ar imtys yra nepriklausomos?",
+          "question": "Kokios jūsų imtys?",
           "comments": "",
           "answers": [
             {
               "id": "4B1",
-              "text": "Taip",
+              "text": "Nepriklausomos",
               "next": "4B1"
             },
             {
               "id": "4B2",
-              "text": "Ne",
+              "text": "Priklausomos/porinės",
               "next": "4B2"
             }
           ],
           "nodes": [
             {
               "id": "4B1",
-              "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+              "question": "Kokie jūsų duomenys?",
               "comments": "",
               "answers": [
                 {
                   "id": "4B1A",
-                  "text": "Taip",
+                  "text": "Intervalinis kintamasis visose grupėse normalus",
                   "action": "Nepriklausomų imčių T-testas"
                 },
                 {
                   "id": "4B1B",
-                  "text": "Ne",
+                  "text": "Bent vienoje grupėje kintamasis nenormalus",
                   "action": "Mann-Whitney U testas"
                 }
               ]
             },
             {
               "id": "4B2",
-              "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+              "question": "Kokie jūsų duomenys?",
               "comments": "",
               "answers": [
                 {
                   "id": "4B2A",
-                  "text": "Taip",
+                  "text": "Visi kintamieji normalūs",
                   "action": "Porinių imčių T-testas"
                 },
                 {
                   "id": "4B2B",
-                  "text": "Ne",
+                  "text": "Bent vienas kintamasis nenormalus",
                   "action": "Wilcoxon ženklų eilučių testas"
                 }
               ]
@@ -245,16 +245,16 @@
         },
         {
           "id": "4C",
-          "question": "Ar imtys yra nepriklausomos?",
+          "question": "Kokios jūsų imtys",
           "comments": "",
           "answers": [
             {
-              "id": "4C1",
+              "id": "Nepriklausomos",
               "text": "Taip",
               "next": "4C1"
             },
             {
-              "id": "4C2",
+              "id": "Priklausomos/porinės",
               "text": "Ne",
               "next": "4C2"
             }
@@ -262,34 +262,34 @@
           "nodes": [
             {
               "id": "4C1",
-              "question": "Ar duomenys atitinka normalumo prielaidą ir yra homogeniški?",
+              "question": "Kokie jūsų duomenys?",
               "comments": "",
               "answers": [
                 {
                   "id": "4C1A",
-                  "text": "Taip",
+                  "text": "Intervalinis kintamasis visose grupėse normalus",
                   "action": "ANOVA"
                 },
                 {
                   "id": "4C1B",
-                  "text": "Ne",
+                  "text": "Bent vienoje grupėje kintamasis nenormalus",
                   "action": "Kruskal-Walliso H testas"
                 }
               ]
             },
             {
               "id": "4C2",
-              "question": "Ar duomenys atitinka normalumo prielaidą?",
+              "question": "Kokie jūsų duomenys?",
               "comments": "",
               "answers": [
                 {
                   "id": "4C2A",
-                  "text": "Taip",
-                  "action": "Priklausomų imčių ANOVA (RM ANOVA)"
+                  "text": "Visi kintamieji normalūs",
+                  "action": "Blokuotuojų duomenų ANOVA"
                 },
                 {
                   "id": "4C2B",
-                  "text": "Ne",
+                  "text": "Bent vienas kintamasis nenormalus",
                   "action": "Friedman testas"
                 }
               ]
