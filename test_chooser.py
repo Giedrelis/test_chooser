@@ -1,6 +1,5 @@
 import streamlit as st
 import json
-import time
 
 # Load the decision tree from the JSON file
 try:
