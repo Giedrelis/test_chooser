@@ -51,7 +51,7 @@ def chat_with_tree():
         st.session_state.current_node = DECISION_TREE
         st.session_state.chat_history = []
         st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["question"]})
-        if "comments" in DECISION_TREE:
+        if "comments" in DECISION_TREE and DECISION_TREE["comments"].strip():
             st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"]})
     current_node = st.session_state.current_node
 
@@ -85,7 +85,7 @@ def chat_with_tree():
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
                     st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
-                    if "comments" in next_node:
+                    if "comments" in next_node and next_node["comments"].strip():
                         st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"]})
                     st.session_state.current_node = next_node
                     st.experimental_rerun()

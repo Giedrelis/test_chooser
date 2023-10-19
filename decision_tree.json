@@ -27,7 +27,7 @@
     {
       "id": "2",
       "question": "Kiek kintamųjų norite ištirti?",
-      "comments": "PLACEHOLDER FOR COMMENTS",
+      "comments": "",
       "answers": [
         {
           "id": "2A",
@@ -53,25 +53,40 @@
       "nodes": [
         {
           "id": "2B",
-          "question": "Ar abu kintamieji yra nominalūs?",
-          "comments": "PLACEHOLDER FOR COMMENTS",
+          "question": "Kokio tipo yra jūsų kintamieji?",
+          "comments": "",
           "answers": [
             {
               "id": "2B1",
-              "text": "Taip",
-              "next": "2B1"
+              "text": "Abu intervaliniai/santykinės skalės",
+              "next": "3A"
             },
             {
               "id": "2B2",
-              "text": "Ne",
-              "action": "Tokia analizė negalima"
+              "text": "Vienas intervalinis, kitas nominalus",
+              "action": "Spearman koreliacija"
+            },
+            {
+              "id": "2B3",
+              "text": "Abu nominalūs",
+              "next": "2B1"
+            },
+            {
+              "id": "2B4",
+              "text": "Vienas intervalinis, kitas ranginis",
+              "action": "Spearman koreliacija"
+            },
+            {
+              "id": "2B5",
+              "text": "Abu ranginiai",
+              "action": "Spearman koreliacija"
             }
           ],
           "nodes": [
             {
               "id": "2B1",
               "question": "Ar abu kintamieji yra dichotominiai?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
+              "comments": "",
               "answers": [
                 {
                   "id": "2B1A",
@@ -88,7 +103,7 @@
                 {
                   "id": "2B1A",
                   "question": "Ar jūsų duomenų rinkinys yra porinis?",
-                  "comments": "PLACEHOLDER FOR COMMENTS",
+                  "comments": "",
                   "answers": [
                     {
                       "id": "2B1A1",
@@ -110,64 +125,35 @@
     },
     {
       "id": "3",
-      "question": "Kokio tipo yra jūsų kintamieji?",
-      "comments": "PLACEHOLDER FOR COMMENTS",
+      "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+      "comments": "",
       "answers": [
         {
           "id": "3A",
-          "text": "Intervaliniai/santykinės skalės",
-          "next": "3A"
+          "text": "Taip",
+          "next": "3A1"
         },
         {
           "id": "3B",
-          "text": "Nominalūs",
-          "action": "Chi kvadrato nepriklausomumo kriterijus"
-        },
-        {
-          "id": "3C",
-          "text": "Ranginiai",
+          "text": "Ne",
           "action": "Spearman koreliacija"
-        },
-        {
-          "id": "3D",
-          "text": "Kita",
-          "action": "Tokia analizė negalima"
         }
       ],
       "nodes": [
         {
-          "id": "3A",
-          "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-          "comments": "PLACEHOLDER FOR COMMENTS",
+          "id": "3A1",
+          "question": "Ar duomenyse nėra dvimačių iškrypimų?",
+          "comments": "",
           "answers": [
             {
-              "id": "3A1",
+              "id": "3A1A",
               "text": "Taip",
-              "next": "3A1"
+              "action": "Pearson koreliacija"
             },
             {
-              "id": "3A2",
+              "id": "3A1B",
               "text": "Ne",
               "action": "Spearman koreliacija"
-            }
-          ],
-          "nodes": [
-            {
-              "id": "3A1",
-              "question": "Ar duomenyse nėra dvimačių iškrypimų?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
-              "answers": [
-                {
-                  "id": "3A1A",
-                  "text": "Taip",
-                  "action": "Pearson koreliacija"
-                },
-                {
-                  "id": "3A1B",
-                  "text": "Ne",
-                  "action": "Spearman koreliacija"
-                }
-              ]
             }
           ]
         }
@@ -176,7 +162,7 @@
     {
       "id": "4",
       "question": "Su kiek kintamųjų norite lyginti vidurkius?",
-      "comments": "PLACEHOLDER FOR COMMENTS",
+      "comments": "",
       "answers": [
         {
           "id": "4A",
@@ -198,7 +184,7 @@
         {
           "id": "4B",
           "question": "Ar imtys yra nepriklausomos?",
-          "comments": "PLACEHOLDER FOR COMMENTS",
+          "comments": "",
           "answers": [
             {
               "id": "4B1",
@@ -215,7 +201,7 @@
             {
               "id": "4B1",
               "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
+              "comments": "",
               "answers": [
                 {
                   "id": "4B1A",
@@ -232,7 +218,7 @@
             {
               "id": "4B2",
               "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
+              "comments": "",
               "answers": [
                 {
                   "id": "4B2A",
@@ -251,7 +237,7 @@
         {
           "id": "4C",
           "question": "Ar imtys yra nepriklausomos?",
-          "comments": "PLACEHOLDER FOR COMMENTS",
+          "comments": "",
           "answers": [
             {
               "id": "4C1",
@@ -268,7 +254,7 @@
             {
               "id": "4C1",
               "question": "Ar duomenys atitinka normalumo prielaidą ir yra homogeniški?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
+              "comments": "",
               "answers": [
                 {
                   "id": "4C1A",
@@ -285,7 +271,7 @@
             {
               "id": "4C2",
               "question": "Ar duomenys atitinka normalumo prielaidą?",
-              "comments": "PLACEHOLDER FOR COMMENTS",
+              "comments": "",
               "answers": [
                 {
                   "id": "4C2A",
@@ -306,7 +292,7 @@
     {
       "id": "5",
       "question": "Kokia statistinė analizė jums reikalinga, ar gal galite apibūdinti savo kintamuosius?",
-      "comments": "PLACEHOLDER FOR COMMENTS",
+      "comments": "",
       "answers": []
     }
   ]
