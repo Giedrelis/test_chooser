@@ -1,6 +1,6 @@
 {
   "id": "1",
-  "question": "Kokį tikslą siekiate pasiekti analizuodami savo duomenis?",
+  "question": "Kokį tikslą siekiate pasiekti su savo duomenimis?",
   "answers": [
     {
       "id": "1A",
@@ -26,8 +26,8 @@
   "nodes": [
     {
       "id": "2",
-      "question": "Kiek kintamųjų norite patikrinti?",
-      "comments": "Čia 'kintamieji' reiškia skirtingus duomenų taškus, kuriuos nagrinėjate, pvz., amžių, lytį, pajamas ir t.t.",
+      "question": "Kiek kintamųjų norite ištirti?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
       "answers": [
         {
           "id": "2A",
@@ -54,7 +54,7 @@
         {
           "id": "2B",
           "question": "Ar abu kintamieji yra nominalūs?",
-          "comments": "Nominalūs kintamieji yra tie, kurie gali būti klasifikuojami į kategorijas, bet neturi tam tikros tvarkos ar vertės.",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
               "id": "2B1",
@@ -70,8 +70,8 @@
           "nodes": [
             {
               "id": "2B1",
-              "question": "Ar abu kintamieji yra dikotominiai?",
-              "comments": "Dikotominiai kintamieji yra nominalieji kintamieji, turintys tik dvi kategorijas.",
+              "question": "Ar abu kintamieji yra dichotominiai?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
                   "id": "2B1A",
@@ -87,8 +87,8 @@
               "nodes": [
                 {
                   "id": "2B1A",
-                  "question": "Ar jūsų imtis yra porinė?",
-                  "comments": "Porinė imtis reiškia, kad kiekvienas duomenų taškas yra susijęs su kitu tašku; pvz., poriniai duomenys gali atsirasti, kai tiriama ta pati grupė žmonių dvi skirtingas sykis.",
+                  "question": "Ar jūsų duomenų rinkinys yra porinis?",
+                  "comments": "PLACEHOLDER FOR COMMENTS",
                   "answers": [
                     {
                       "id": "2B1A1",
@@ -111,6 +111,7 @@
     {
       "id": "3",
       "question": "Kokio tipo yra jūsų kintamieji?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
       "answers": [
         {
           "id": "3A",
@@ -125,7 +126,7 @@
         {
           "id": "3C",
           "text": "Ranginiai",
-          "next": "3D"
+          "action": "Spearman koreliacija"
         },
         {
           "id": "3D",
@@ -137,49 +138,34 @@
         {
           "id": "3A",
           "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-          "comments": "Normalumo prielaida reiškia, kad jūsų duomenys yra paskirstyti pagal tipinę bell formos kreivę.",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
               "id": "3A1",
               "text": "Taip",
-              "next": "3A1A"
+              "next": "3A1"
             },
             {
               "id": "3A2",
               "text": "Ne",
-              "next": "3A1B"
+              "action": "Spearman koreliacija"
             }
           ],
           "nodes": [
             {
-              "id": "3A1A",
-              "question": "PLACEHOLDER FOR NORMALITY QUESTIONS",
+              "id": "3A1",
+              "question": "Ar duomenyse nėra dvimačių iškrypimų?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
-                  "id": "3A1A1",
-                  "text": "PLACEHOLDER OPTION 1",
-                  "next": "PLACEHOLDER"
+                  "id": "3A1A",
+                  "text": "Taip",
+                  "action": "Pearson koreliacija"
                 },
                 {
-                  "id": "3A1A2",
-                  "text": "PLACEHOLDER OPTION 2",
-                  "next": "PLACEHOLDER"
-                }
-              ]
-            },
-            {
-              "id": "3A1B",
-              "question": "PLACEHOLDER FOR NON-NORMALITY QUESTIONS",
-              "answers": [
-                {
-                  "id": "3A1B1",
-                  "text": "PLACEHOLDER OPTION 1",
-                  "next": "PLACEHOLDER"
-                },
-                {
-                  "id": "3A1B2",
-                  "text": "PLACEHOLDER OPTION 2",
-                  "next": "PLACEHOLDER"
+                  "id": "3A1B",
+                  "text": "Ne",
+                  "action": "Spearman koreliacija"
                 }
               ]
             }
@@ -189,8 +175,8 @@
     },
     {
       "id": "4",
-      "question": "Su kiek kintamųjų lyginate vidurkius?",
-      "comments": "Čia kalbame apie vidurkių palyginimą tarp dviejų ar daugiau grupių ar kategorijų.",
+      "question": "Su kiek kintamųjų norite lyginti vidurkius?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
       "answers": [
         {
           "id": "4A",
@@ -211,17 +197,17 @@
       "nodes": [
         {
           "id": "4B",
-          "question": "Ar imtys yra nepriklausomos ar priklausomos?",
-          "comments": "Nepriklausomos imtys yra tokios, kurios nėra susijusios viena su kita; priklausomos imtys yra susijusios.",
+          "question": "Ar imtys yra nepriklausomos?",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
               "id": "4B1",
-              "text": "Nepriklausomos",
+              "text": "Taip",
               "next": "4B1"
             },
             {
               "id": "4B2",
-              "text": "Priklausomos",
+              "text": "Ne",
               "next": "4B2"
             }
           ],
@@ -229,7 +215,7 @@
             {
               "id": "4B1",
               "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-              "comments": "Normalumo prielaida reiškia, kad jūsų duomenys yra paskirstyti pagal tipinę bell formos kreivę.",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
                   "id": "4B1A",
@@ -246,7 +232,7 @@
             {
               "id": "4B2",
               "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-              "comments": "Normalumo prielaida reiškia, kad jūsų duomenys yra paskirstyti pagal tipinę bell formos kreivę.",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
                   "id": "4B2A",
@@ -264,106 +250,66 @@
         },
         {
           "id": "4C",
-          "question": "Ar imtys yra nepriklausomos ar priklausomos?",
-          "comments": "Nepriklausomos imtys yra tokios, kurios nėra susijusios viena su kita; priklausomos imtys yra susijusios.",
+          "question": "Ar imtys yra nepriklausomos?",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
               "id": "4C1",
-              "text": "Nepriklausomos",
+              "text": "Taip",
               "next": "4C1"
             },
             {
               "id": "4C2",
-              "text": "Priklausomos",
+              "text": "Ne",
               "next": "4C2"
             }
           ],
           "nodes": [
             {
               "id": "4C1",
-              "question": "Ar jūsų duomenys atitinka normalumo prielaidą, ar yra 5 ar daugiau rangų ir ar duomenų kiekis tarp grupių nesiskiria daugiau nei 3 kartus?",
-"comments": "Tai sudėtingesnė sąlyga, kurioje reikia atsižvelgti į kelis veiksnius norint pasirinkti teisingą statistinį testą.",
-"answers": [
-{
-"id": "4C1A",
-"text": "Taip",
-"action": "ANOVA"
-},
-{
-"id": "4C1B",
-"text": "Ne",
-"action": "Kruskal-Walliso H testas"
-}
-]
-},
-{
-"id": "4C2",
-"question": "Ar jūsų duomenys atitinka normalumo prielaidą ir ar yra 5 ar daugiau rangų?",
-"comments": "Normalumo ir rangų prielaidos padeda nustatyti, kuris statistinis testas bus tinkamiausias jūsų duomenims.",
-"answers": [
-{
-"id": "4C2A",
-"text": "Taip",
-"action": "RM ANOVA"
-},
-{
-"id": "4C2B",
-"text": "Ne",
-"action": "Friedman testas"
-}
-]
-}
-]
-}
-]
-},
-{
-"id": "5",
-"question": "Gal galite apibūdinti savo kintamuosius arba ką tiksliai norite su jais atlikti?",
-"comments": "Šis klausimas padės mums suprasti, kaip mes galime jums padėti atlikti statistinę analizę.",
-"answers": [5 ar daugiau rangų ir ar duomenų kiekis tarp grupių nesiskiria daugiau nei 3 kartus?",
-"comments": "Tai sudėtingesnė sąlyga, kurioje reikia atsižvelgti į kelis veiksnius norint pasirinkti teisingą statistinį testą.",
-"answers": [
-{
-"id": "4C1A",
-"text": "Taip",
-"action": "ANOVA"
-},
-{
-"id": "4C1B",
-"text": "Ne",
-"action": "Kruskal-Walliso H testas"
-}
-]
-},
-{
-"id": "4C2",
-"question": "Ar jūsų duomenys atitinka normalumo prielaidą ir ar yra 5 ar daugiau rangų?",
-"comments": "Normalumo ir rangų prielaidos padeda nustatyti, kuris statistinis testas bus tinkamiausias jūsų duomenims.",
-"answers": [
-{
-"id": "4C2A",
-"text": "Taip",
-"action": "RM ANOVA"
-},
-{
-"id": "4C2B",
-"text": "Ne",
-"action": "Friedman testas"
-}
-]
-}
-]
-}
-]
-},
-{
-"id": "5",
-"question": "Gal galite apibūdinti savo kintamuosius arba ką tiksliai norite su jais atlikti?",
-"comments": "Šis klausimas padės mums suprasti, kaip mes galime jums padėti atlikti statistinę analizę.",
-"answers": [
-// ... (You need to expand on this based on what specific additional help or guidance you want to provide to the users who choose this option)
-]
-}
-]
+              "question": "Ar duomenys atitinka normalumo prielaidą ir yra homogeniški?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4C1A",
+                  "text": "Taip",
+                  "action": "ANOVA"
+                },
+                {
+                  "id": "4C1B",
+                  "text": "Ne",
+                  "action": "Kruskal-Walliso H testas"
+                }
+              ]
+            },
+            {
+              "id": "4C2",
+              "question": "Ar duomenys atitinka normalumo prielaidą?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4C2A",
+                  "text": "Taip",
+                  "action": "Priklausomų imčių ANOVA (RM ANOVA)"
+                },
+                {
+                  "id": "4C2B",
+                  "text": "Ne",
+                  "action": "Friedman testas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "question": "Kokia statistinė analizė jums reikalinga, ar gal galite apibūdinti savo kintamuosius?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
+      "answers": [
+        // Details will be dependent on the specific types of analyses or variables the user might be dealing with
+      ]
+    }
+  ]
 }
