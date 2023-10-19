@@ -28,21 +28,11 @@ def get_next_node(node_id, tree):
                 return next_node
     return None
 
-def load_html(test_name):
-    """
-    Load the HTML file for the given test name.
-    """
-    try:
-        with open(f"{test_name}.html", "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        return f"HTML file for {test_name} not found."
-
 def chat_with_tree():
     """
     Chat with the user based on the decision tree.
     """
-    st.title("ČekanavičiusGPT")
+    st.title("ČekasGPT")
 
     # Apply custom styles
     st.markdown("""
@@ -60,8 +50,8 @@ def chat_with_tree():
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
         st.session_state.chat_history = []
-        st.session_state.chat_history.append({"name": "assistant", "text": f"<strong>{DECISION_TREE['question']}</strong>", "type": "question"})
-        if "comments" in DECISION_TREE and DECISION_TREE["comments"].strip():
+        st.session_state.chat_history.append({"name": "assistant", "text": f"<b>{DECISION_TREE['question']}</b>", "type": "question"})
+        if "comments" in DECISION_TREE:
             st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"], "type": "comment"})
     current_node = st.session_state.current_node
 
@@ -69,9 +59,9 @@ def chat_with_tree():
     for message in st.session_state.chat_history:
         with st.chat_message(name=message["name"]):
             if message["type"] == "question":
-                st.markdown(message["text"], unsafe_allow_html=True)
+                st.markdown(f"<b>{message['text']}</b>", unsafe_allow_html=True)
             else:
-                st.write(message["text"])
+                st.markdown(message["text"], unsafe_allow_html=True)
 
     # Display the available answers as buttons
     selected_option = None
@@ -92,17 +82,13 @@ def chat_with_tree():
             if answer["text"] == selected_option:
                 if "action" in answer:
                     with st.chat_message(name="assistant"):
-                        st.write(answer["action"])
+                        st.markdown(answer["action"], unsafe_allow_html=True)
                     # Add the action to the chat history
-                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"], "type": "action"})
-                    
-                    # Load the corresponding HTML to the sidebar
-                    with st.sidebar:
-                        st.markdown(load_html(answer["action"]), unsafe_allow_html=True)
+                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"], "type": "comment"})
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
-                    st.session_state.chat_history.append({"name": "assistant", "text": f"<strong>{next_node['question']}</strong>", "type": "question"})
-                    if "comments" in next_node and next_node["comments"].strip():
+                    st.session_state.chat_history.append({"name": "assistant", "text": f"<b>{next_node['question']}</b>", "type": "question"})
+                    if "comments" in next_node:
                         st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"], "type": "comment"})
                     st.session_state.current_node = next_node
                     st.experimental_rerun()
@@ -116,6 +102,20 @@ def chat_with_tree():
             if "chat_history" in st.session_state:
                 del st.session_state.chat_history
             st.experimental_rerun()
+
+    with st.sidebar:
+        st.header("Test Details")
+        if "current_node" in st.session_state:
+            test_name = st.session_state.current_node.get("question", "")
+            file_path = f"path_to_html_files/{test_name}.html"
+            
+            # Check if the HTML file exists, if not create one
+            if not os.path.exists(file_path):
+                with open(file_path, 'w', encoding='utf-8') as file:
+                    file.write(f"<h1>{test_name}</h1><p>Details for {test_name} will be added here.</p>")
+            
+            st.markdown(f"Details for **{test_name}**:")
+            st.markdown(f"<iframe src='{file_path}' width='100%' height='600px'></iframe>", unsafe_allow_html=True)
 
 def main():
     chat_with_tree()
