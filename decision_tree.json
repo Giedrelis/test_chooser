@@ -1,7 +1,7 @@
 {
   "id": "1",
   "question": "Ko jūsų prašo statistiniame klausime?",
-  "comments": "Pvz.:<br>Tikrinti proporcijas: Ar tiek pat vyrų ir moterų serga depresija?<br>Tikrinti sąsajas/koreliacijas: Ar egzistuoja sąsaja tarp lyties ir depresyvumo<br>Lyginti vidurkius: Ar skiriasi IQ tarp vyrų ir moterų?",
+  "comments": "",
   "answers": [
     {
       "id": "1A",
