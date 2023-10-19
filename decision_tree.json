@@ -1,6 +1,7 @@
 {
   "id": "1",
-  "question": "Kokį tikslą siekiate pasiekti su savo duomenimis?",
+  "question": "Ko jūsų prašo statistiniame klausime?",
+  "comments": "Pvz.: 1. Ar tiek pat vyrų ir moterų serga depresija?\n2. Ar egzistuoja sąsaja tarp lyties ir depresyvumo\n3. Ar skiriasi IQ tarp vyrų ir moterų?",
   "answers": [
     {
       "id": "1A",
@@ -21,18 +22,13 @@
   "nodes": [
     {
       "id": "2",
-      "question": "Kiek kintamųjų norite ištirti?",
+      "question": "Kiek turite kintamųjų?",
       "comments": "",
       "answers": [
         {
           "id": "2A",
           "text": "1",
           "action": "Chi kvadrato suderinamumo kriterijus",
-          "interpretation": {
-            "condition": "PLACEHOLDER FOR CONDITIONS",
-            "interpretation": "PLACEHOLDER FOR INTERPRETATION",
-            "steps": "PLACEHOLDER FOR STEPS"
-          }
         },
         {
           "id": "2B",
@@ -48,18 +44,18 @@
       "nodes": [
         {
           "id": "2B",
-          "question": "Ar abu kintamieji yra nominalūs?",
+          "question": "Kokie jūsų kintamieji?",
           "comments": "",
           "answers": [
             {
               "id": "2B1",
-              "text": "Taip",
+              "text": "Priklausomi/poriniai",
               "next": "2B1"
             },
             {
               "id": "2B2",
-              "text": "Ne",
-              "action": "Tokia analizė negalima"
+              "text": "Nepriklausomi",
+              "action": "Chi kvadrato nepriklausomumo/homogeniškumo kriterijus"
             }
           ],
           "nodes": [
@@ -70,32 +66,13 @@
               "answers": [
                 {
                   "id": "2B1A",
-                  "text": "Taip",
-                  "next": "2B1A"
+                  "text": "Taip (abu dichotominiai)",
+                  "next": "McNemar kriterijus"
                 },
                 {
                   "id": "2B1B",
-                  "text": "Ne",
-                  "action": "Chi kvadrato nepriklausomumo kriterijus"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "2B1A",
-                  "question": "Ar jūsų duomenų rinkinys yra porinis?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "2B1A1",
-                      "text": "Taip",
-                      "action": "McNemar kriterijus"
-                    },
-                    {
-                      "id": "2B1A2",
-                      "text": "Ne",
-                      "action": "Chi kvadrato nepriklausomumo kriterijus"
-                    }
-                  ]
+                  "text": "Ne (bent vienas nedichotominis)",
+                  "action": "Analizė negalima"
                 }
               ]
             }
@@ -245,7 +222,7 @@
         },
         {
           "id": "4C",
-          "question": "Kokios jūsų imty?s",
+          "question": "Kokios jūsų imtys?",
           "comments": "",
           "answers": [
             {
