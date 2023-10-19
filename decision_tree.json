@@ -245,17 +245,17 @@
         },
         {
           "id": "4C",
-          "question": "Kokios jūsų imtys",
+          "question": "Kokios jūsų imty?s",
           "comments": "",
           "answers": [
             {
-              "id": "Nepriklausomos",
-              "text": "Taip",
+              "id": "4CA",
+              "text": "Nepriklausomos",
               "next": "4C1"
             },
             {
-              "id": "Priklausomos/porinės",
-              "text": "Ne",
+              "id": "4CB",
+              "text": "Priklausomos/porinės",
               "next": "4C2"
             }
           ],
