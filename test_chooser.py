@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import os
 
 # Load the decision tree from the JSON file
 try:
@@ -32,7 +33,7 @@ def chat_with_tree():
     """
     Chat with the user based on the decision tree.
     """
-    st.title("ČekasGPT")
+    st.title("ČekanavičiusGPT")
 
     # Apply custom styles
     st.markdown("""
@@ -43,6 +44,10 @@ def chat_with_tree():
             .stButton>button {
                 width: 100%;
             }
+            /* Move sidebar to the right */
+            .sidebar .sidebar-content {
+                margin-left: auto !important;
+            }
         </style>
     """, unsafe_allow_html=True)
 
@@ -50,18 +55,15 @@ def chat_with_tree():
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
         st.session_state.chat_history = []
-        st.session_state.chat_history.append({"name": "assistant", "text": f"<b>{DECISION_TREE['question']}</b>", "type": "question"})
-        if "comments" in DECISION_TREE:
-            st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"], "type": "comment"})
+        st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["question"]})
+        if "comments" in DECISION_TREE and DECISION_TREE["comments"].strip():
+            st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"]})
     current_node = st.session_state.current_node
 
     # Display the chat history
     for message in st.session_state.chat_history:
         with st.chat_message(name=message["name"]):
-            if message["type"] == "question":
-                st.markdown(f"<b>{message['text']}</b>", unsafe_allow_html=True)
-            else:
-                st.markdown(message["text"], unsafe_allow_html=True)
+            st.write(message["text"])
 
     # Display the available answers as buttons
     selected_option = None
@@ -75,21 +77,21 @@ def chat_with_tree():
             st.write(selected_option)
 
         # Add the selected answer to the chat history
-        st.session_state.chat_history.append({"name": "user", "text": selected_option, "type": "answer"})
+        st.session_state.chat_history.append({"name": "user", "text": selected_option})
 
         # Find the selected answer
         for answer in current_node["answers"]:
             if answer["text"] == selected_option:
                 if "action" in answer:
                     with st.chat_message(name="assistant"):
-                        st.markdown(answer["action"], unsafe_allow_html=True)
+                        st.write(answer["action"])
                     # Add the action to the chat history
-                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"], "type": "comment"})
+                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"]})
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
-                    st.session_state.chat_history.append({"name": "assistant", "text": f"<b>{next_node['question']}</b>", "type": "question"})
-                    if "comments" in next_node:
-                        st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"], "type": "comment"})
+                    st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
+                    if "comments" in next_node and next_node["comments"].strip():
+                        st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"]})
                     st.session_state.current_node = next_node
                     st.experimental_rerun()
 
@@ -103,19 +105,20 @@ def chat_with_tree():
                 del st.session_state.chat_history
             st.experimental_rerun()
 
-    with st.sidebar:
-        st.header("Test Details")
-        if "current_node" in st.session_state:
-            test_name = st.session_state.current_node.get("question", "")
-            file_path = f"path_to_html_files/{test_name}.html"
-            
-            # Check if the HTML file exists, if not create one
-            if not os.path.exists(file_path):
-                with open(file_path, 'w', encoding='utf-8') as file:
-                    file.write(f"<h1>{test_name}</h1><p>Details for {test_name} will be added here.</p>")
-            
-            st.markdown(f"Details for **{test_name}**:")
-            st.markdown(f"<iframe src='{file_path}' width='100%' height='600px'></iframe>", unsafe_allow_html=True)
+# Sidebar
+with st.sidebar:
+    st.header("Test Details")
+    if "current_node" in st.session_state:
+        test_name = st.session_state.current_node.get("question", "")
+        file_path = f"path_to_html_files/{test_name}.html"
+        
+        # Check if the HTML file exists, if not create one
+        if not os.path.exists(file_path):
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(f"<h1>{test_name}</h1><p>Details for {test_name} will be added here.</p>")
+        
+        st.markdown(f"Details for **{test_name}**:")
+        st.markdown(f"<iframe src='{file_path}' width='100%' height='600px'></iframe>", unsafe_allow_html=True)
 
 def main():
     chat_with_tree()
