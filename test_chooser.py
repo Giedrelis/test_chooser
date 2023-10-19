@@ -60,15 +60,18 @@ def chat_with_tree():
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
         st.session_state.chat_history = []
-        st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["question"]})
+        st.session_state.chat_history.append({"name": "assistant", "text": f"<strong>{DECISION_TREE['question']}</strong>", "type": "question"})
         if "comments" in DECISION_TREE and DECISION_TREE["comments"].strip():
-            st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"]})
+            st.session_state.chat_history.append({"name": "assistant", "text": DECISION_TREE["comments"], "type": "comment"})
     current_node = st.session_state.current_node
 
     # Display the chat history
     for message in st.session_state.chat_history:
         with st.chat_message(name=message["name"]):
-            st.write(message["text"])
+            if message["type"] == "question":
+                st.markdown(message["text"], unsafe_allow_html=True)
+            else:
+                st.write(message["text"])
 
     # Display the available answers as buttons
     selected_option = None
@@ -82,7 +85,7 @@ def chat_with_tree():
             st.write(selected_option)
 
         # Add the selected answer to the chat history
-        st.session_state.chat_history.append({"name": "user", "text": selected_option})
+        st.session_state.chat_history.append({"name": "user", "text": selected_option, "type": "answer"})
 
         # Find the selected answer
         for answer in current_node["answers"]:
@@ -91,16 +94,16 @@ def chat_with_tree():
                     with st.chat_message(name="assistant"):
                         st.write(answer["action"])
                     # Add the action to the chat history
-                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"]})
+                    st.session_state.chat_history.append({"name": "assistant", "text": answer["action"], "type": "action"})
                     
                     # Load the corresponding HTML to the sidebar
                     with st.sidebar:
                         st.markdown(load_html(answer["action"]), unsafe_allow_html=True)
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
-                    st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
+                    st.session_state.chat_history.append({"name": "assistant", "text": f"<strong>{next_node['question']}</strong>", "type": "question"})
                     if "comments" in next_node and next_node["comments"].strip():
-                        st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"]})
+                        st.session_state.chat_history.append({"name": "assistant", "text": next_node["comments"], "type": "comment"})
                     st.session_state.current_node = next_node
                     st.experimental_rerun()
 

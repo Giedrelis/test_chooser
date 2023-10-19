@@ -1,7 +1,7 @@
 {
   "id": "1",
   "question": "Ko jūsų prašo statistiniame klausime?",
-  "comments": "Pvz.:\n 1. Ar tiek pat vyrų ir moterų serga depresija?\n2. Ar egzistuoja sąsaja tarp lyties ir depresyvumo\n3. Ar skiriasi IQ tarp vyrų ir moterų?",
+  "comments": "Pvz.:\n Tikrinti proporcijas: Ar tiek pat vyrų ir moterų serga depresija?\n Tikrinti sąsajas/koreliacijas: Ar egzistuoja sąsaja tarp lyties ir depresyvumo\nLyginti vidurkius: Ar skiriasi IQ tarp vyrų ir moterų?",
   "answers": [
     {
       "id": "1A",
@@ -109,13 +109,13 @@
       "nodes": [
         {
           "id": "3A",
-          "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+          "question": "Kokie jūsų duomenys?",
           "comments": "",
           "answers": [
             {
               "id": "3A1",
-              "text": "Taip",
-              "next": "3A1"
+              "text": "Abu kintamieji turi normalų pasiskirstymą",
+              "next": "Bent vienas kintamasis neturi normalaus pasiskirstymo"
             },
             {
               "id": "3A2",
@@ -126,18 +126,18 @@
           "nodes": [
             {
               "id": "3A1",
-              "question": "Ar duomenyse nėra dvimačių iškrypimų?",
+              "question": "Ar duomenyse yra dvimačių iškrypimų?",
               "comments": "",
               "answers": [
                 {
                   "id": "3A1A",
                   "text": "Taip",
-                  "action": "Pearson koreliacija"
+                  "action": "Spearman koreliacija"
                 },
                 {
                   "id": "3A1B",
                   "text": "Ne",
-                  "action": "Spearman koreliacija"
+                  "action": "Pearson koreliacija"
                 }
               ]
             }
@@ -191,12 +191,12 @@
               "answers": [
                 {
                   "id": "4B1A",
-                  "text": "Intervalinis kintamasis visose grupėse normalus",
+                  "text": "Intervalinis kintamasis visose grupėse turi normalųjį pasiskirstymą",
                   "action": "Nepriklausomų imčių T-testas"
                 },
                 {
                   "id": "4B1B",
-                  "text": "Bent vienoje grupėje kintamasis nenormalus",
+                  "text": "Bent vienoje grupėje kintamasis neturi normalaus pasiskirstymo",
                   "action": "Mann-Whitney U testas"
                 }
               ]
@@ -208,12 +208,12 @@
               "answers": [
                 {
                   "id": "4B2A",
-                  "text": "Visi kintamieji normalūs",
+                  "text": "Visi kintamieji turi normalų pasiskirstymą",
                   "action": "Porinių imčių T-testas"
                 },
                 {
                   "id": "4B2B",
-                  "text": "Bent vienas kintamasis nenormalus",
+                  "text": "Bent vienas kintamasis neturi normalaus pasiskirstymo",
                   "action": "Wilcoxon ženklų eilučių testas"
                 }
               ]
@@ -244,12 +244,12 @@
               "answers": [
                 {
                   "id": "4C1A",
-                  "text": "Intervalinis kintamasis visose grupėse normalus",
+                  "text": "Intervalinis kintamasis visose grupėse turi normalųjį pasiskirstymą",
                   "action": "ANOVA"
                 },
                 {
                   "id": "4C1B",
-                  "text": "Bent vienoje grupėje kintamasis nenormalus",
+                  "text": "Bent vienoje grupėje kintamasis neturi normalaus pasiskirstymo",
                   "action": "Kruskal-Walliso H testas"
                 }
               ]
@@ -261,12 +261,12 @@
               "answers": [
                 {
                   "id": "4C2A",
-                  "text": "Visi kintamieji normalūs",
+                  "text": "Visi kintamieji turi normalų pasiskirstymą",
                   "action": "Blokuotuojų duomenų ANOVA"
                 },
                 {
                   "id": "4C2B",
-                  "text": "Bent vienas kintamasis nenormalus",
+                  "text": "Bent vienas kintamasis neturi normalaus pasiskirstymo",
                   "action": "Friedman testas"
                 }
               ]
