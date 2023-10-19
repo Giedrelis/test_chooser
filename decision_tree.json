@@ -16,11 +16,6 @@
       "id": "1C",
       "text": "Lyginti vidurkius",
       "next": "4"
-    },
-    {
-      "id": "1D",
-      "text": "Kita/Nesuprantu",
-      "next": "5"
     }
   ],
   "nodes": [
@@ -302,12 +297,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "5",
-      "question": "Kokia statistinė analizė jums reikalinga, ar gal galite apibūdinti savo kintamuosius?",
-      "comments": "",
-      "answers": []
     }
   ]
 }
