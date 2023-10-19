@@ -57,6 +57,9 @@ def chat_with_tree():
         </style>
     """, unsafe_allow_html=True)
 
+    # Sidebar
+    st.sidebar.title("Test Information")
+
     # Initialize or retrieve the current node and chat history from session state
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
