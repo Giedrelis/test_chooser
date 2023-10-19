@@ -56,9 +56,6 @@ def chat_with_tree():
         </style>
     """, unsafe_allow_html=True)
 
-    # Sidebar
-    st.sidebar.title("Test Information")
-
     # Initialize or retrieve the current node and chat history from session state
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
@@ -97,7 +94,8 @@ def chat_with_tree():
                     st.session_state.chat_history.append({"name": "assistant", "text": answer["action"]})
                     
                     # Load the corresponding HTML to the sidebar
-                    st.sidebar.markdown(load_html(answer["action"]), unsafe_allow_html=True)
+                    with st.sidebar:
+                        st.markdown(load_html(answer["action"]), unsafe_allow_html=True)
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
                     st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
