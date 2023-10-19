@@ -35,6 +35,15 @@ def chat_with_tree():
     """
     st.title("ČekanavičiusGPT")
 
+    # Apply custom styles to move sidebar to the right
+    st.markdown("""
+        <style>
+            .reportview-container .main .block-container {
+                order: 1;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     # Initialize or retrieve the current node and chat history from session state
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
@@ -92,8 +101,8 @@ def chat_with_tree():
 # Sidebar
 with st.sidebar:
     st.header("Test Details")
-    if "current_node" in st.session_state:
-        test_name = st.session_state.current_node.get("question", "")
+    if "current_node" in st.session_state and "action" in st.session_state.current_node:
+        test_name = st.session_state.current_node.get("action", "")
         directory = "path_to_html_files"
         file_path = os.path.join(directory, f"{test_name}.html")
         
