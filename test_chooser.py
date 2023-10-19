@@ -35,22 +35,6 @@ def chat_with_tree():
     """
     st.title("ČekanavičiusGPT")
 
-    # Apply custom styles
-    st.markdown("""
-        <style>
-            .stChat .stChatMessage p {
-                font-size: 20px;
-            }
-            .stButton>button {
-                width: 100%;
-            }
-            /* Move sidebar to the right */
-            .sidebar .sidebar-content {
-                margin-left: auto !important;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
     # Initialize or retrieve the current node and chat history from session state
     if "current_node" not in st.session_state:
         st.session_state.current_node = DECISION_TREE
@@ -63,7 +47,7 @@ def chat_with_tree():
     # Display the chat history
     for message in st.session_state.chat_history:
         with st.chat_message(name=message["name"]):
-            st.write(message["text"])
+            st.write(message["text"].replace("\n", "<br/>"), unsafe_allow_html=True)
 
     # Display the available answers as buttons
     selected_option = None
@@ -110,7 +94,12 @@ with st.sidebar:
     st.header("Test Details")
     if "current_node" in st.session_state:
         test_name = st.session_state.current_node.get("question", "")
-        file_path = f"path_to_html_files/{test_name}.html"
+        directory = "path_to_html_files"
+        file_path = os.path.join(directory, f"{test_name}.html")
+        
+        # Check if the directory exists, if not create it
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
         # Check if the HTML file exists, if not create one
         if not os.path.exists(file_path):
