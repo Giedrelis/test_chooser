@@ -1,255 +1,104 @@
 {
   "id": "1",
-  "question": "Kokio tipo yra jūsų kintamieji?",
-  "comments": "",
+  "question": "Kokį tikslą siekiate pasiekti su savo duomenimis?",
   "answers": [
     {
       "id": "1A",
-      "text": "Nominalus",
-      "next": "1A"
+      "text": "Tikrinti proporcijas",
+      "next": "2"
     },
     {
       "id": "1B",
-      "text": "Intervalinis/santykių skalės",
-      "next": "1B"
+      "text": "Tikrinti sąsajas/koreliacijas",
+      "next": "3"
     },
     {
       "id": "1C",
-      "text": "Ranginis",
-      "next": "1C"
+      "text": "Lyginti vidurkius",
+      "next": "4"
+    },
+    {
+      "id": "1D",
+      "text": "Kita/Nesuprantu",
+      "next": "5"
     }
   ],
   "nodes": [
     {
-      "id": "1A",
-      "question": "Ar jūs turite tik vieną kintamąjį?",
-      "comments": "",
+      "id": "2",
+      "question": "Kiek kintamųjų norite ištirti?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
       "answers": [
         {
-          "id": "1A1",
-          "text": "Taip",
-          "action": "Chi kvadrato suderinamumo kriterijus"
+          "id": "2A",
+          "text": "1",
+          "action": "Chi kvadrato suderinamumo kriterijus",
+          "interpretation": {
+            "condition": "PLACEHOLDER FOR CONDITIONS",
+            "interpretation": "PLACEHOLDER FOR INTERPRETATION",
+            "steps": "PLACEHOLDER FOR STEPS"
+          }
         },
         {
-          "id": "1A2",
-          "text": "Ne, turiu du kintamuosius.",
-          "next": "1A2"
+          "id": "2B",
+          "text": "2",
+          "next": "2B"
+        },
+        {
+          "id": "2C",
+          "text": "Daugiau",
+          "action": "Tokia analizė negalima"
         }
       ],
       "nodes": [
         {
-          "id": "1A2",
+          "id": "2B",
           "question": "Ar abu kintamieji yra nominalūs?",
-          "comments": "",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
-              "id": "1A2A",
+              "id": "2B1",
               "text": "Taip",
-              "action": "Chi kvadrato nepriklausomumo/homogeniškumo kriterijus"
+              "next": "2B1"
             },
             {
-              "id": "1A2B",
-              "text": "Ne, vienas iš jų yra dvireikšmis.",
-              "next": "1A2B"
+              "id": "2B2",
+              "text": "Ne",
+              "action": "Tokia analizė negalima"
             }
           ],
           "nodes": [
             {
-              "id": "1A2B",
-              "question": "Ar tai porinė imtis?",
-              "comments": "",
+              "id": "2B1",
+              "question": "Ar abu kintamieji yra dichotominiai?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
-                  "id": "1A2B1",
+                  "id": "2B1A",
                   "text": "Taip",
-                  "action": "McNemar kriterijus"
+                  "next": "2B1A"
                 },
                 {
-                  "id": "1A2B2",
+                  "id": "2B1B",
                   "text": "Ne",
-                  "action": "Chi kvadrato nepriklausomumo/homogeniškumo kriterijus"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1B",
-      "question": "Kiek kintamųjų turite?",
-      "comments": "",
-      "answers": [
-        {
-          "id": "1B1",
-          "text": "Vienas",
-          "action": "T-testas vienai imčiai"
-        },
-        {
-          "id": "1B2",
-          "text": "Du",
-          "next": "1B2"
-        }
-      ],
-      "nodes": [
-        {
-          "id": "1B2",
-          "question": "Kokio tipo yra antrasis kintamasis?",
-          "comments": "",
-          "answers": [
-            {
-              "id": "1B2A",
-              "text": "Nominalus dvireikšmis",
-              "next": "1B2A"
-            },
-            {
-              "id": "1B2B",
-              "text": "Intervalinis/santykių skalės",
-              "next": "1B2B"
-            }
-          ],
-          "nodes": [
-            {
-              "id": "1B2A",
-              "question": "Ar tai nepriklausoma imtis?",
-              "comments": "",
-              "answers": [
-                {
-                  "id": "1B2A1",
-                  "text": "Taip",
-                  "next": "1B2A1"
-                },
-                {
-                  "id": "1B2A2",
-                  "text": "Ne",
-                  "next": "1B2A2"
+                  "action": "Chi kvadrato nepriklausomumo kriterijus"
                 }
               ],
               "nodes": [
                 {
-                  "id": "1B2A1",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
+                  "id": "2B1A",
+                  "question": "Ar jūsų duomenų rinkinys yra porinis?",
+                  "comments": "PLACEHOLDER FOR COMMENTS",
                   "answers": [
                     {
-                      "id": "1B2A1A",
+                      "id": "2B1A1",
                       "text": "Taip",
-                      "next": "1B2A1A"
+                      "action": "McNemar kriterijus"
                     },
                     {
-                      "id": "1B2A1B",
+                      "id": "2B1A2",
                       "text": "Ne",
-                      "action": "Mann-Whitney"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1B2A1A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1B2A1A1",
-                          "text": "Taip",
-                          "next": "1B2A1A1"
-                        },
-                        {
-                          "id": "1B2A1A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1B2A1A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1B2A1A1A",
-                              "text": "Taip",
-                              "action": "Pearson koreliacija"
-                            },
-                            {
-                              "id": "1B2A1A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "1B2A2",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1B2A2A",
-                      "text": "Taip",
-                      "next": "1B2A2A"
-                    },
-                    {
-                      "id": "1B2A2B",
-                      "text": "Ne",
-                      "action": "Wilcoxon"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1B2A2A",
-                      "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1B2A2A1",
-                          "text": "Taip",
-                          "action": "T-testas porinėms imtims"
-                        },
-                        {
-                          "id": "1B2A2A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "1B2B",
-              "question": "Ar tai porinė imtis?",
-              "comments": "",
-              "answers": [
-                {
-                  "id": "1B2B1",
-                  "text": "Taip",
-                  "next": "1B2B1"
-                },
-                {
-                  "id": "1B2B2",
-                  "text": "Ne",
-                  "action": "T-testas nepriklausomoms imtims"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "1B2B1",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1B2B1A",
-                      "text": "Taip",
-                      "action": "T-testas porinėms imtims"
-                    },
-                    {
-                      "id": "1B2B1B",
-                      "text": "Ne",
-                      "action": "Wilcoxon"
+                      "action": "Chi kvadrato nepriklausomumo kriterijus"
                     }
                   ]
                 }
@@ -260,415 +109,205 @@
       ]
     },
     {
-      "id": "1C",
-      "question": "Kiek kintamųjų turite?",
-      "comments": "",
+      "id": "3",
+      "question": "Kokio tipo yra jūsų kintamieji?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
       "answers": [
         {
-          "id": "1C1",
-          "text": "Vienas",
-          "action": "Kendall tau koreliacija"
+          "id": "3A",
+          "text": "Intervaliniai/santykinės skalės",
+          "next": "3A"
         },
         {
-          "id": "1C2",
-          "text": "Du",
-          "next": "1C2"
+          "id": "3B",
+          "text": "Nominalūs",
+          "action": "Chi kvadrato nepriklausomumo kriterijus"
+        },
+        {
+          "id": "3C",
+          "text": "Ranginiai",
+          "action": "Spearman koreliacija"
+        },
+        {
+          "id": "3D",
+          "text": "Kita",
+          "action": "Tokia analizė negalima"
         }
       ],
       "nodes": [
         {
-          "id": "1C2",
-          "question": "Kokio tipo yra antrasis kintamasis?",
-          "comments": "",
+          "id": "3A",
+          "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+          "comments": "PLACEHOLDER FOR COMMENTS",
           "answers": [
             {
-              "id": "1C2A",
-              "text": "Nominalus",
-              "next": "1C2A"
+              "id": "3A1",
+              "text": "Taip",
+              "next": "3A1"
             },
             {
-              "id": "1C2B",
-              "text": "Intervalinis/santykių skalės",
-              "next": "1C2B"
-            },
-            {
-              "id": "1C2C",
-              "text": "Ranginis",
-              "next": "1C2C"
+              "id": "3A2",
+              "text": "Ne",
+              "action": "Spearman koreliacija"
             }
           ],
           "nodes": [
             {
-              "id": "1C2A",
-              "question": "Ar tai nepriklausoma imtis?",
-              "comments": "",
+              "id": "3A1",
+              "question": "Ar duomenyse nėra dvimačių iškrypimų?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
               "answers": [
                 {
-                  "id": "1C2A1",
+                  "id": "3A1A",
                   "text": "Taip",
-                  "next": "1C2A1"
+                  "action": "Pearson koreliacija"
                 },
                 {
-                  "id": "1C2A2",
+                  "id": "3A1B",
                   "text": "Ne",
-                  "next": "1C2A2"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "1C2A1",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2A1A",
-                      "text": "Taip",
-                      "next": "1C2A1A"
-                    },
-                    {
-                      "id": "1C2A1B",
-                      "text": "Ne",
-                      "action": "Kruskal-Wallis"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2A1A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2A1A1",
-                          "text": "Taip",
-                          "next": "1C2A1A1"
-                        },
-                        {
-                          "id": "1C2A1A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1C2A1A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1C2A1A1A",
-                              "text": "Taip",
-                              "action": "ANOVA"
-                            },
-                            {
-                              "id": "1C2A1A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "1C2A2",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2A2A",
-                      "text": "Taip",
-                      "next": "1C2A2A"
-                    },
-                    {
-                      "id": "1C2A2B",
-                      "text": "Ne",
-                      "action": "Friedman"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2A2A",
-                      "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2A2A1",
-                          "text": "Taip",
-                          "action": "RM ANOVA"
-                        },
-                        {
-                          "id": "1C2A2A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "1C2B",
-              "question": "Ar tai porinė imtis?",
-              "comments": "",
-              "answers": [
-                {
-                  "id": "1C2B1",
-                  "text": "Taip",
-                  "next": "1C2B1"
-                },
-                {
-                  "id": "1C2B2",
-                  "text": "Ne",
-                  "next": "1C2B2"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "1C2B1",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2B1A",
-                      "text": "Taip",
-                      "next": "1C2B1A"
-                    },
-                    {
-                      "id": "1C2B1B",
-                      "text": "Ne",
-                      "action": "Wilcoxon"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2B1A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2B1A1",
-                          "text": "Taip",
-                          "next": "1C2B1A1"
-                        },
-                        {
-                          "id": "1C2B1A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1C2B1A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1C2B1A1A",
-                              "text": "Taip",
-                              "action": "T-testas porinėms imtims"
-                            },
-                            {
-                              "id": "1C2B1A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "1C2B2",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2B2A",
-                      "text": "Taip",
-                      "next": "1C2B2A"
-                    },
-                    {
-                      "id": "1C2B2B",
-                      "text": "Ne",
-                      "action": "Spearman koreliacija"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2B2A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2B2A1",
-                          "text": "Taip",
-                          "next": "1C2B2A1"
-                        },
-                        {
-                          "id": "1C2B2A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1C2B2A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1C2B2A1A",
-                              "text": "Taip",
-                              "action": "Pearson koreliacija"
-                            },
-                            {
-                              "id": "1C2B2A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "1C2C",
-              "question": "Ar tai porinė imtis?",
-              "comments": "",
-              "answers": [
-                {
-                  "id": "1C2C1",
-                  "text": "Taip",
-                  "next": "1C2C1"
-                },
-                {
-                  "id": "1C2C2",
-                  "text": "Ne",
-                  "next": "1C2C2"
-                }
-              ],
-              "nodes": [
-                {
-                  "id": "1C2C1",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2C1A",
-                      "text": "Taip",
-                      "next": "1C2C1A"
-                    },
-                    {
-                      "id": "1C2C1B",
-                      "text": "Ne",
-                      "action": "Wilcoxon"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2C1A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2C1A1",
-                          "text": "Taip",
-                          "next": "1C2C1A1"
-                        },
-                        {
-                          "id": "1C2C1A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1C2C1A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1C2C1A1A",
-                              "text": "Taip",
-                              "action": "T-testas porinėms imtims"
-                            },
-                            {
-                              "id": "1C2C1A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "1C2C2",
-                  "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
-                  "comments": "",
-                  "answers": [
-                    {
-                      "id": "1C2C2A",
-                      "text": "Taip",
-                      "next": "1C2C2A"
-                    },
-                    {
-                      "id": "1C2C2B",
-                      "text": "Ne",
-                      "action": "Spearman koreliacija"
-                    }
-                  ],
-                  "nodes": [
-                    {
-                      "id": "1C2C2A",
-                      "question": "Ar jūsų duomenys neturi dvimačių iškirčių?",
-                      "comments": "",
-                      "answers": [
-                        {
-                          "id": "1C2C2A1",
-                          "text": "Taip",
-                          "next": "1C2C2A1"
-                        },
-                        {
-                          "id": "1C2C2A2",
-                          "text": "Ne",
-                          "action": "Spearman koreliacija"
-                        }
-                      ],
-                      "nodes": [
-                        {
-                          "id": "1C2C2A1",
-                          "question": "Ar ryšys tarp kintamųjų yra tiesinis?",
-                          "comments": "",
-                          "answers": [
-                            {
-                              "id": "1C2C2A1A",
-                              "text": "Taip",
-                              "action": "Pearson koreliacija"
-                            },
-                            {
-                              "id": "1C2C2A1B",
-                              "text": "Ne",
-                              "action": "Spearman koreliacija"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                  "action": "Spearman koreliacija"
                 }
               ]
             }
           ]
         }
       ]
+    },
+    {
+      "id": "4",
+      "question": "Su kiek kintamųjų norite lyginti vidurkius?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
+      "answers": [
+        {
+          "id": "4A",
+          "text": "Vienas",
+          "action": "Vienos imties T-testas"
+        },
+        {
+          "id": "4B",
+          "text": "Du",
+          "next": "4B"
+        },
+        {
+          "id": "4C",
+          "text": "Trys ar daugiau",
+          "next": "4C"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4B",
+          "question": "Ar imtys yra nepriklausomos?",
+          "comments": "PLACEHOLDER FOR COMMENTS",
+          "answers": [
+            {
+              "id": "4B1",
+              "text": "Taip",
+              "next": "4B1"
+            },
+            {
+              "id": "4B2",
+              "text": "Ne",
+              "next": "4B2"
+            }
+          ],
+          "nodes": [
+            {
+              "id": "4B1",
+              "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4B1A",
+                  "text": "Taip",
+                  "action": "Nepriklausomų imčių T-testas"
+                },
+                {
+                  "id": "4B1B",
+                  "text": "Ne",
+                  "action": "Mann-Whitney U testas"
+                }
+              ]
+            },
+            {
+              "id": "4B2",
+              "question": "Ar jūsų duomenys atitinka normalumo prielaidą?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4B2A",
+                  "text": "Taip",
+                  "action": "Porinių imčių T-testas"
+                },
+                {
+                  "id": "4B2B",
+                  "text": "Ne",
+                  "action": "Wilcoxon ženklų eilučių testas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4C",
+          "question": "Ar imtys yra nepriklausomos?",
+          "comments": "PLACEHOLDER FOR COMMENTS",
+          "answers": [
+            {
+              "id": "4C1",
+              "text": "Taip",
+              "next": "4C1"
+            },
+            {
+              "id": "4C2",
+              "text": "Ne",
+              "next": "4C2"
+            }
+          ],
+          "nodes": [
+            {
+              "id": "4C1",
+              "question": "Ar duomenys atitinka normalumo prielaidą ir yra homogeniški?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4C1A",
+                  "text": "Taip",
+                  "action": "ANOVA"
+                },
+                {
+                  "id": "4C1B",
+                  "text": "Ne",
+                  "action": "Kruskal-Walliso H testas"
+                }
+              ]
+            },
+            {
+              "id": "4C2",
+              "question": "Ar duomenys atitinka normalumo prielaidą?",
+              "comments": "PLACEHOLDER FOR COMMENTS",
+              "answers": [
+                {
+                  "id": "4C2A",
+                  "text": "Taip",
+                  "action": "Priklausomų imčių ANOVA (RM ANOVA)"
+                },
+                {
+                  "id": "4C2B",
+                  "text": "Ne",
+                  "action": "Friedman testas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "question": "Kokia statistinė analizė jums reikalinga, ar gal galite apibūdinti savo kintamuosius?",
+      "comments": "PLACEHOLDER FOR COMMENTS",
+      "answers": []
     }
   ]
 }
