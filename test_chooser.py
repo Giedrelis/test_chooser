@@ -95,8 +95,7 @@ def chat_with_tree():
                     st.session_state.chat_history.append({"name": "assistant", "text": answer["action"]})
                     
                     # Load the corresponding HTML to the sidebar
-                    with st.sidebar:
-                        st.markdown(load_html(answer["action"]), unsafe_allow_html=True)
+                    st.sidebar.markdown(load_html(answer["action"]), unsafe_allow_html=True)
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
                     st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
