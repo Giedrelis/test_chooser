@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import time
 
 # Load the decision tree from the JSON file
 try:
@@ -27,6 +28,16 @@ def get_next_node(node_id, tree):
             if next_node:
                 return next_node
     return None
+
+def load_html(test_name):
+    """
+    Load the HTML file for the given test name.
+    """
+    try:
+        with open(f"{test_name}.html", "r", encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        return f"HTML file for {test_name} not found."
 
 def chat_with_tree():
     """
@@ -82,6 +93,10 @@ def chat_with_tree():
                         st.write(answer["action"])
                     # Add the action to the chat history
                     st.session_state.chat_history.append({"name": "assistant", "text": answer["action"]})
+                    
+                    # Load the corresponding HTML to the sidebar
+                    with st.sidebar:
+                        st.markdown(load_html(answer["action"]), unsafe_allow_html=True)
                 elif "next" in answer:
                     next_node = get_next_node(answer["next"], [DECISION_TREE])
                     st.session_state.chat_history.append({"name": "assistant", "text": next_node["question"]})
