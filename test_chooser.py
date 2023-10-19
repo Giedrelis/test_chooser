@@ -1,6 +1,5 @@
 import streamlit as st
 import json
-import os
 
 # Load the decision tree from the JSON file
 try:
@@ -16,25 +15,10 @@ except Exception as e:
     st.error(f"An error occurred: {e}")
     st.stop()
 
-# Directory where HTML files will be saved
-directory = "html_files"
-
-# Check if the directory exists, if not create it
-if not os.path.exists(directory):
-    os.makedirs(directory)
-
-# Create an HTML file for each test
-def create_html_files_for_tests(tests):
-    for test in tests:
-        file_path = os.path.join(directory, f"{test}.html")
-        if not os.path.exists(file_path):
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(f"<h1>{test}</h1><p>Details for {test} will be added here.</p>")
-
-# Load the list of tests from tests.json
+# Load the tests descriptions from the JSON file
 try:
     with open("tests.json", "r", encoding="utf-8") as file:
-        tests = json.load(file)
+        TESTS = json.load(file)
 except FileNotFoundError:
     st.error("The tests.json file was not found.")
     st.stop()
@@ -44,9 +28,6 @@ except json.JSONDecodeError:
 except Exception as e:
     st.error(f"An error occurred: {e}")
     st.stop()
-
-create_html_files_for_tests(tests)
-
 
 def get_next_node(node_id, tree):
     """
@@ -67,11 +48,14 @@ def chat_with_tree():
     """
     st.title("ČekanavičiusGPT")
 
-    # Apply custom styles to move sidebar to the right
+    # Apply custom styles
     st.markdown("""
         <style>
-            .reportview-container .main .block-container {
-                order: 1;
+            .stChat .stChatMessage p {
+                font-size: 20px;
+            }
+            .stButton>button {
+                width: 100%;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -88,7 +72,7 @@ def chat_with_tree():
     # Display the chat history
     for message in st.session_state.chat_history:
         with st.chat_message(name=message["name"]):
-            st.write(message["text"].replace("\n", "<br/>"), unsafe_allow_html=True)
+            st.write(message["text"])
 
     # Display the available answers as buttons
     selected_option = None
@@ -120,6 +104,10 @@ def chat_with_tree():
                     st.session_state.current_node = next_node
                     st.experimental_rerun()
 
+        # Display the test description if available
+        if "test" in current_node and current_node["test"] in TESTS:
+            st.sidebar.markdown(TESTS[current_node["test"]])
+
     # Reset button on the bottom right, always visible
     cols = st.columns([4, 1])
     with cols[1]:
@@ -130,28 +118,8 @@ def chat_with_tree():
                 del st.session_state.chat_history
             st.experimental_rerun()
 
-# Sidebar
-with st.sidebar:
-    st.header("Test Details")
-    if "current_node" in st.session_state and "action" in st.session_state.current_node:
-        test_name = st.session_state.current_node.get("action", "")
-        directory = "path_to_html_files"
-        file_path = os.path.join(directory, f"{test_name}.html")
-        
-        # Check if the directory exists, if not create it
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        # Check if the HTML file exists, if not create one
-        if not os.path.exists(file_path):
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(f"<h1>{test_name}</h1><p>Details for {test_name} will be added here.</p>")
-        
-        st.markdown(f"Details for **{test_name}**:")
-        st.markdown(f"<iframe src='{file_path}' width='100%' height='600px'></iframe>", unsafe_allow_html=True)
-
 def main():
     chat_with_tree()
 
-if __name__ == "__main__":
+if __name__== "__main__":
     main()
